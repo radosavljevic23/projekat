@@ -12,14 +12,15 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Semestar)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Profesor)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Smer)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -31,13 +32,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Profesor)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Smer)
-        </td>
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Ime }) |
             @Html.ActionLink("Details", "Details", new { id=item.Ime }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Ime })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Ime })|
+            @Html.ActionLink("Prijavi", "Prijavi", new { id = item.Ime }) 
         </td>
     </tr>
 }

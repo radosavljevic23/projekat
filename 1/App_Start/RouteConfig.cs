@@ -13,11 +13,26 @@ namespace _1
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+            routes.MapRoute(
+                name: "FreeDownload",
+                url: "freedownload",
+                defaults: new
+                {
+                    Controller = "Home",
+                    Action = "About",
+                    id = UrlParameter.Optional
+
+                    //year = 2017,
+                    //category= "AttributeRouteTest"
+                });
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+           
+
         }
     }
 }

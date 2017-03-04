@@ -23,8 +23,9 @@ namespace _1
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-tema.css",
                       "~/Content/site.css"));
         }
     }

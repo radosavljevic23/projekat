@@ -14,6 +14,8 @@ namespace _1.Models
         public bool BrowserRemembered { get; set; }
     }
 
+
+
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }

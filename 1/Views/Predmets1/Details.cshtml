@@ -1,0 +1,42 @@
+﻿@model _1.Models.Predmet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Predmet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Semestar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Semestar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profesor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profesor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

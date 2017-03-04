@@ -17,17 +17,21 @@
         <th>
             @Html.DisplayNameFor(model => model.Prezime)
         </th>
+        
         <th>
-            @Html.DisplayNameFor(model => model.Smer)
+            @Html.DisplayNameFor(model => model.GodinaStudija)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.UserName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.godStudija)
+            @Html.DisplayNameFor(model => model.Password)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
+            @Html.DisplayNameFor(model => model.PolType)
         </th>
         <th></th>
     </tr>
@@ -40,22 +44,26 @@
         <td>
             @Html.DisplayFor(modelItem => item.Prezime)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Smer)
+            @Html.DisplayFor(modelItem => item.GodinaStudija)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.godStudija)
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.username)
+            @Html.DisplayFor(modelItem => item.PolType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.brIndexa }) |
-            @Html.ActionLink("Details", "Details", new { id=item.brIndexa }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.brIndexa })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.Email })*@
         </td>
     </tr>
 }

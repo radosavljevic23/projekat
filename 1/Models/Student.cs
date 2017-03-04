@@ -6,17 +6,29 @@ using System.Web;
 
 namespace _1.Models
 {
-    public class Student
+    public class Student : ApplicationUser
     {
-      
-        public string Name {get; set;}
-        [Key]
-        public int brIndexa { get; set; }
+
+        public string Name { get; set; }
+
+        //[Key]
+        //public int brIndexa { get; set; }
         public string Prezime { get; set; }
-        public string Smer {get; set;}
-        public int godStudija { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-      
+        
+        public int GodinaStudija { get; set; }
+        //public string username { get; set; }
+        //public string password { get; set; }
+        public int Number { get; set; }
+        public Pol PolType { get; set; }
+
+        public virtual ICollection<Status_Predmeta> Statusi { get; set; }
+
+
+    }
+   
+    public enum Pol
+    {
+        Male,
+        Female
     }
 }

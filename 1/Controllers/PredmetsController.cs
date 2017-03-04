@@ -21,7 +21,7 @@ namespace _1.Controllers
         }
 
         // GET: Predmets/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -36,6 +36,7 @@ namespace _1.Controllers
         }
 
         // GET: Predmets/Create
+        //[Authorize(Roles =Role.ADMIN)]
         public ActionResult Create()
         {
             return View();
@@ -45,8 +46,8 @@ namespace _1.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Ime,Semestar,Profesor,Smer")] Predmet predmet)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Ime,Semestar,Profesor")] Predmet predmet)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +60,7 @@ namespace _1.Controllers
         }
 
         // GET: Predmets/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -77,7 +78,7 @@ namespace _1.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Ime,Semestar,Profesor,Smer")] Predmet predmet)
         {
             if (ModelState.IsValid)
@@ -90,7 +91,7 @@ namespace _1.Controllers
         }
 
         // GET: Predmets/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -106,8 +107,8 @@ namespace _1.Controllers
 
         // POST: Predmets/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        //[ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int? id)
         {
             Predmet predmet = db.Predmeti.Find(id);
             db.Predmeti.Remove(predmet);

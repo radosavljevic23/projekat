@@ -21,13 +21,13 @@ namespace _1.Controllers
         }
 
         // GET: Students/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Students.Find(Id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace _1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "brIndexa,Name,Prezime,Smer,godStudija,username,password")] Student student)
+        public ActionResult Create([Bind(Include = "brIndexa,Name,Prezime,godStudija,username,password,Number,PolType")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -59,13 +59,13 @@ namespace _1.Controllers
         }
 
         // GET: Students/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Students.Find(Id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace _1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "brIndexa,Name,Prezime,Smer,godStudija,username,password")] Student student)
+        public ActionResult Edit([Bind(Include = "Name,Prezime,GodinaStudija,UserName,Number,PolType")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -90,13 +90,13 @@ namespace _1.Controllers
         }
 
         // GET: Students/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Students.Find(Id);
             if (student == null)
             {
                 return HttpNotFound();
