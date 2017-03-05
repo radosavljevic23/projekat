@@ -10,6 +10,7 @@ using _1.Models;
 
 namespace _1.Controllers
 {
+    [Authorize]
     public class Status_PredmetaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,7 +18,18 @@ namespace _1.Controllers
         // GET: Status_Predmeta
         public ActionResult Index()
         {
-            return View(db.Status.ToList());
+            //return View(db.Status.ToList());
+            List<Status_Predmeta> SP = new List<Status_Predmeta>();
+
+            if (User.IsInRole(Role.ADMIN))
+            {
+                Administrator admin = db.Administrators.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
+                ViewBag.StudentId = admin.Id;
+
+                SP = db.Status.ToList();
+
+            }
+            return View(SP);
         }
 
         // GET: Status_Predmeta/Details/5

@@ -10,6 +10,7 @@ using _1.Models;
 
 namespace _1.Controllers
 {
+    [Authorize]
     public class StudentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,7 +18,23 @@ namespace _1.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            List<Student> studenti = new List<Student>();
+
+            if (User.IsInRole(Role.STUDENT))
+            {
+                Student student = db.Students.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
+                ViewBag.StudentId = student.Id;
+
+                studenti.Add(student);
+
+            }
+            else
+            {
+                studenti = db.Students.ToList();
+
+            }
+
+            return View(studenti);
         }
 
         // GET: Students/Details/5
@@ -46,7 +63,7 @@ namespace _1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "brIndexa,Name,Prezime,godStudija,username,password,Number,PolType")] Student student)
+        public ActionResult Create([Bind(Include = "Name,Email,Prezime,GodinaStudija,PolType")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -78,15 +95,32 @@ namespace _1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,Prezime,GodinaStudija,UserName,Number,PolType")] Student student)
+        public ActionResult Edit([Bind(Include = "Id,Name,Email,Prezime,GodinaStudija,PolType")] Student viewStudent)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(student).State = EntityState.Modified;
+
+                Student dbStudent = db.Students.Find(viewStudent.Id);
+
+                dbStudent.Name = viewStudent.Name;
+                dbStudent.GodinaStudija = viewStudent.GodinaStudija;
+                dbStudent.Prezime = viewStudent.Prezime;
+                dbStudent.PolType = viewStudent.PolType;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                
                 return RedirectToAction("Index");
             }
-            return View(student);
+
+            return View(viewStudent);
         }
 
         // GET: Students/Delete/5

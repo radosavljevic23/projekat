@@ -29,14 +29,14 @@
        
 
         <dt>
-            @Html.DisplayNameFor(model => model.godStudija)
+            @Html.DisplayNameFor(model => model.GodinaStudija)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.godStudija)
+            @Html.DisplayFor(model => model.GodinaStudija)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.username)
         </dt>
 
@@ -50,11 +50,11 @@
 
         <dd>
             @Html.DisplayFor(model => model.password)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.brIndexa }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

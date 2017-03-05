@@ -24,7 +24,8 @@
         <th>Actions</th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         @*<td>@Html.CheckBox(item.ID)</td>*@
         <td>
@@ -37,20 +38,30 @@
             @Html.DisplayFor(modelItem => item.Profesor)
         </td>
         <td>
-            @if (User.IsInRole(_1.Models.Role.ADMIN)) { 
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id })@Html.Raw("|")
-                @Html.ActionLink("Details", "Details", new { id=item.Id })@Html.Raw("|")
-                @Html.ActionLink("Delete", "Delete", new { id = item.Ime })@Html.Raw("|")
-            }
-          
-            @if (item.Statusi.Any(x => x.Student.Id == (string)ViewBag.StudentId))
+            @if (User.IsInRole(_1.Models.Role.ADMIN))
             {
-                @Html.ActionLink("Prijavi", "Prijavi", new { id = item.Id })
-                }
-            
-            
-        </td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })@Html.Raw("|")
+                @Html.ActionLink("Details", "Details", new { id = item.Id })@Html.Raw("|")
+                @Html.ActionLink("Delete", "Delete", new { id = item.Ime })@Html.Raw("|")
+
+            }
+         
+    @if (User.IsInRole(_1.Models.Role.STUDENT))
+    {
+        if (!item.Statusi.Any(x => x.Student.Id == (string)ViewBag.StudentId))
+        {
+            @Html.ActionLink("Prijavi", "Prijavi", new { id = item.Id })
+        }
+
+        if (item.Statusi.Any(x => x.Student.Id == (string)ViewBag.StudentId && x.Polozen == true))
+        {
+            @Html.Raw("Ispit Polozen")
+        }
+
+    }
+    </td>
     </tr>
-}
+       
+    }
 
 </table>

@@ -85,8 +85,9 @@
         </dd>
         <dt>Edit profile:</dt>
         <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Edit", "Edit") ]
+            [ @Html.ActionLink("Edit", "Edit", "Students") ]
+            @*[ @Html.ActionLink("Edit", "Edit", "Students", new { id = "01db8608-765c-4771-81cc-b40388440b60" }, new { }) ]*@
+            
         </dd>
     </dl>
 </div>

@@ -14,12 +14,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Prezime)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.password)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -28,16 +28,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Prezime)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.password)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.korisnickoIme }) |
-            @Html.ActionLink("Details", "Details", new { id=item.korisnickoIme }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.korisnickoIme })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Email }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Email }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Email })
         </td>
     </tr>
 }
